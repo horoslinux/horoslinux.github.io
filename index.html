@@ -1,198 +1,196 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HorOS Linux: An Arch-based, AI-native distribution</title>
-  <meta name="description" content="HorOS Linux is an Arch Linux-based live ISO with the limon AI assistant and a terminal setup wizard. Overview, installation, and docs.">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/png" href="assets/img/icon.png">
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem("horos-theme");
-        var theme = saved === "dark" || saved === "light"
-          ? saved
-          : (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        document.documentElement.dataset.theme = theme;
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = theme === "dark" ? "#111111" : "#ffffff";
-      } catch (error) {
-        document.documentElement.dataset.theme = "light";
-      }
-    })();
-  </script>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/icons.js" defer></script>
-  <script src="assets/js/wallpapers.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
-</head>
-<body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>HorOS Linux: An Arch-based, AI-native distribution</title>
+		<meta name="description" content="HorOS Linux is an Arch Linux-based live ISO with the limon AI assistant and a guided whiptail TUI setup wizard. Overview, installation, and docs." />
+		<meta name="theme-color" content="#ffffff" />
+		<link rel="icon" type="image/png" href="assets/img/icon.png" />
+		<script>
+			(function () {
+				try {
+					var saved = localStorage.getItem("horos-theme");
+					var theme = saved === "dark" || saved === "light" ? saved : window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+					document.documentElement.dataset.theme = theme;
+					var meta = document.querySelector('meta[name="theme-color"]');
+					if (meta) meta.content = theme === "dark" ? "#111111" : "#ffffff";
+				} catch (error) {
+					document.documentElement.dataset.theme = "light";
+				}
+			})();
+		</script>
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<script src="assets/js/icons.js" defer></script>
+		<script src="assets/js/wallpapers.js" defer></script>
+		<script src="assets/js/main.js" defer></script>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container header-inner">
+				<a class="brand" href="index.html" aria-label="HorOS home">
+					<img src="assets/img/logo.png" alt="HorOS logo" />
+					<span>HorOS</span>
+				</a>
+				<div class="header-actions">
+					<button class="icon-btn theme-btn" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+						<span class="theme-icon theme-icon-sun" data-icon="sun"></span>
+						<span class="theme-icon theme-icon-moon" data-icon="moon"></span>
+					</button>
+					<button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+						<span data-icon="menu"></span>
+					</button>
+					<nav class="nav" aria-label="Main menu">
+						<a href="index.html" data-page="index.html">Home</a>
+						<a href="docs.html" data-page="docs.html">Docs</a>
+					</nav>
+				</div>
+			</div>
+		</header>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="HorOS home">
-      <img src="assets/img/logo.png" alt="HorOS logo">
-      <span>HorOS</span>
-    </a>
-    <div class="header-actions">
-      <button class="icon-btn theme-btn" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
-        <span class="theme-icon theme-icon-sun" data-icon="sun"></span>
-        <span class="theme-icon theme-icon-moon" data-icon="moon"></span>
-      </button>
-      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-        <span data-icon="menu"></span>
-      </button>
-      <nav class="nav" aria-label="Main menu">
-        <a href="index.html" data-page="index.html">Home</a>
-        <a href="docs.html" data-page="docs.html">Docs</a>
-      </nav>
-    </div>
-  </div>
-</header>
+		<main>
+			<div class="hero">
+				<div class="container hero-inner">
+					<span class="eyebrow">Arch Linux based, AI-native</span>
+					<h1>Your computer,<br /><em>under your control.</em></h1>
+					<p class="lead">
+						HorOS offers a clean Arch base, a guided <code>whiptail</code> TUI setup wizard, and the
+						<strong>limon</strong> AI assistant on every install.
+					</p>
+					<div class="buttons">
+						<a class="btn btn-primary" href="docs.html#kurulum">Start installation<span data-icon="arrow-right"></span></a>
+						<a class="btn btn-secondary" href="docs.html">Read the docs<span data-icon="book"></span></a>
+					</div>
+					<div class="hero-meta">
+						<span><strong>x86_64</strong> 64-bit</span>
+						<span><strong>1.4 GiB</strong> live ISO</span>
+						<span><strong>8 GB</strong> minimum disk</span>
+						<span><strong>BIOS + UEFI</strong> support</span>
+					</div>
+				</div>
+			</div>
 
-<main>
-  <div class="hero">
-    <div class="container hero-inner">
-      <span class="eyebrow">Arch Linux based, AI-native</span>
-      <h1>Your computer,<br><em>under your control.</em></h1>
-      <p class="lead">
-        HorOS offers a clean Arch base, a straightforward terminal setup wizard, and the
-        <strong>limon</strong> AI assistant on every install.
-      </p>
-      <div class="buttons">
-        <a class="btn btn-primary" href="docs.html#kurulum">Start installation<span data-icon="arrow-right"></span></a>
-        <a class="btn btn-secondary" href="docs.html">Read the docs<span data-icon="book"></span></a>
-      </div>
-      <div class="hero-meta">
-        <span><strong>x86_64</strong> 64-bit</span>
-        <span><strong>1.4 GiB</strong> live ISO</span>
-        <span><strong>8 GB</strong> minimum disk</span>
-        <span><strong>BIOS + UEFI</strong> support</span>
-      </div>
-    </div>
-  </div>
+			<section>
+				<div class="container">
+					<div class="section-head">
+						<h2>Why HorOS?</h2>
+						<p>It keeps Arch's power while rethinking setup, security, and AI integration from the ground up.</p>
+					</div>
+					<div class="grid grid-3">
+						<article class="card">
+							<div class="card-icon"><span data-icon="sparkles"></span></div>
+							<h3>AI-native</h3>
+							<p>The limon assistant is installed on every system. Choose your provider and API key after installation with <code>limon config</code>.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon"><span data-icon="terminal"></span></div>
+							<h3>Terminal-first</h3>
+							<p>A guided <code>whiptail</code> TUI walks you through each step, with trusted <code>archinstall</code> running underneath.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon"><span data-icon="box"></span></div>
+							<h3>Pure Arch base</h3>
+							<p>Standard packages, standard paths, standard <code>pacman</code>. No custom fork or hidden layer.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon"><span data-icon="grid"></span></div>
+							<h3>Two usage profiles</h3>
+							<p><strong>Server</strong> and <strong>Workstation</strong>. Workstation lets you choose a terminal, KDE Plasma, or GNOME.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon"><span data-icon="shield"></span></div>
+							<h3>Security by default</h3>
+							<p><code>ufw</code> blocks incoming connections by default. SSH is open only on the Server profile.</p>
+						</article>
+						<article class="card">
+							<div class="card-icon"><span data-icon="bolt"></span></div>
+							<h3>ISO that runs from RAM</h3>
+							<p>The live environment loads into RAM with <code>archiso</code> and opens with the HorOS Plymouth splash; press <code>Esc</code> for boot details.</p>
+						</article>
+					</div>
+				</div>
+			</section>
 
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <h2>Why HorOS?</h2>
-        <p>It keeps Arch's power while rethinking setup, security, and AI integration from the ground up.</p>
-      </div>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon"><span data-icon="sparkles"></span></div>
-          <h3>AI-native</h3>
-          <p>The limon assistant is installed on every system. Pick a provider during setup, then enter your API key with <code>limon config</code>.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><span data-icon="terminal"></span></div>
-          <h3>Terminal-first</h3>
-          <p>Setup happens in an Anaconda-style summary screen, with trusted <code>archinstall</code> running underneath.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><span data-icon="box"></span></div>
-          <h3>Pure Arch base</h3>
-          <p>Standard packages, standard paths, standard <code>pacman</code>. No custom fork or hidden layer.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><span data-icon="grid"></span></div>
-          <h3>Two usage profiles</h3>
-          <p><strong>Server</strong> and <strong>Workstation</strong>. Workstation lets you choose a terminal, KDE Plasma, or GNOME.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><span data-icon="shield"></span></div>
-          <h3>Security by default</h3>
-          <p><code>nftables</code> blocks incoming connections by default. SSH is open only on the Server profile.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon"><span data-icon="bolt"></span></div>
-          <h3>ISO that runs from RAM</h3>
-          <p>The live environment loads into RAM with <code>archiso</code>; as soon as setup starts, network and hardware are detected in the background.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+			<section class="alt">
+				<div class="container">
+					<div class="section-head">
+						<h2>At a glance</h2>
+						<p>The key numbers to know before you start.</p>
+					</div>
+					<div class="facts">
+						<div class="fact"><b>64-bit</b><span>x86_64, SSE2, no 32-bit support</span></div>
+						<div class="fact"><b>1 GB</b><span>Minimum RAM for the live environment (Server)</span></div>
+						<div class="fact"><b>8 GB</b><span>Minimum disk space</span></div>
+						<div class="fact"><b>4 GB</b><span>Recommended USB size</span></div>
+					</div>
+					<div class="note"><strong>Internet required:</strong> Packages are downloaded during setup. HorOS does not currently support offline installation; if there is no network connection, the wizard lets you configure settings first and continue once you are connected.</div>
+				</div>
+			</section>
 
-  <section class="alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>At a glance</h2>
-        <p>The key numbers to know before you start.</p>
-      </div>
-      <div class="facts">
-        <div class="fact"><b>64-bit</b><span>x86_64, SSE2, no 32-bit support</span></div>
-        <div class="fact"><b>1 GB</b><span>Minimum RAM for the live environment (Server)</span></div>
-        <div class="fact"><b>8 GB</b><span>Minimum disk space</span></div>
-        <div class="fact"><b>4 GB</b><span>Recommended USB size</span></div>
-      </div>
-      <div class="note">
-        <strong>Internet required:</strong> Packages are downloaded during setup. HorOS does not currently support offline installation;
-        if there is no network connection, the wizard lets you configure settings first and continue once you are connected.
-      </div>
-    </div>
-  </section>
+			<section>
+				<div class="container">
+					<div class="section-head">
+						<h2>Profiles</h2>
+						<p>Two main profiles; the desktop is only asked for on Workstation.</p>
+					</div>
+					<div class="grid grid-2">
+						<article class="card">
+							<h3>Server</h3>
+							<p>SSH open (22), all other incoming connections closed. A minimal, terminal-based install.</p>
+							<p style="margin-top: 12px">
+								<a href="docs.html#server">Profile details<span data-icon="arrow-right" class="link-icon"></span></a>
+							</p>
+						</article>
+						<article class="card">
+							<h3>Workstation</h3>
+							<p>All incoming connections closed. For desktop use with a terminal, KDE Plasma, or GNOME.</p>
+							<p style="margin-top: 12px">
+								<a href="docs.html#workstation">Profile details<span data-icon="arrow-right" class="link-icon"></span></a>
+							</p>
+						</article>
+					</div>
+				</div>
+			</section>
 
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <h2>Profiles</h2>
-        <p>Two main profiles; the desktop is only asked for on Workstation.</p>
-      </div>
-      <div class="grid grid-2">
-        <article class="card">
-          <h3>Server</h3>
-          <p>SSH open (22), all other incoming connections closed. A minimal, terminal-based install.</p>
-          <p style="margin-top:12px"><a href="docs.html#server">Profile details<span data-icon="arrow-right" class="link-icon"></span></a></p>
-        </article>
-        <article class="card">
-          <h3>Workstation</h3>
-          <p>All incoming connections closed. For desktop use with a terminal, KDE Plasma, or GNOME.</p>
-          <p style="margin-top:12px"><a href="docs.html#workstation">Profile details<span data-icon="arrow-right" class="link-icon"></span></a></p>
-        </article>
-      </div>
-    </div>
-  </section>
+			<section class="alt">
+				<div class="container">
+					<div class="section-head">
+						<h2>HorOS wallpapers</h2>
+						<p>The ISO ships with 15 wallpapers; after installation they are ready in your selector.</p>
+					</div>
+					<div class="shots" data-wallpaper-strip>
+						<img class="shot" src="assets/img/horos-wallpaper-01.jpg" alt="HorOS wallpaper 1" />
+						<img class="shot" src="assets/img/horos-wallpaper-02.jpg" alt="HorOS wallpaper 2" />
+						<img class="shot" src="assets/img/horos-wallpaper-03.jpg" alt="HorOS wallpaper 3" />
+					</div>
+				</div>
+			</section>
 
-  <section class="alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>HorOS wallpapers</h2>
-        <p>The ISO ships with 20 wallpapers; after installation they are ready in your selector.</p>
-      </div>
-      <div class="shots" data-wallpaper-strip>
-        <img class="shot" src="assets/img/wallpaper-01.jpg" alt="HorOS wallpaper 1">
-        <img class="shot" src="assets/img/wallpaper-02.jpg" alt="HorOS wallpaper 2">
-        <img class="shot" src="assets/img/wallpaper-03.jpg" alt="HorOS wallpaper 3">
-      </div>
-    </div>
-  </section>
+			<section>
+				<div class="container">
+					<div class="section-head">
+						<h2>Ready?</h2>
+						<p>Build the ISO, write it to USB, and finish the setup in the terminal wizard.</p>
+					</div>
+					<div class="buttons">
+						<a class="btn btn-primary" href="docs.html#kurulum">Step-by-step installation<span data-icon="arrow-right"></span></a>
+						<a class="btn btn-secondary" href="docs.html#sorun-giderme">Troubleshooting<span data-icon="book"></span></a>
+					</div>
+				</div>
+			</section>
+		</main>
 
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <h2>Ready?</h2>
-        <p>Build the ISO, write it to USB, and finish the setup in the terminal wizard.</p>
-      </div>
-      <div class="buttons">
-        <a class="btn btn-primary" href="docs.html#kurulum">Step-by-step installation<span data-icon="arrow-right"></span></a>
-        <a class="btn btn-secondary" href="docs.html#sorun-giderme">Troubleshooting<span data-icon="book"></span></a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <a class="brand" href="index.html">
-      <img src="assets/img/logo.png" alt="">
-      <span>HorOS Linux<small>arch-based, ai-native</small></span>
-    </a>
-    <div class="footer-links">
-      <a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Source code<span data-icon="external" class="link-icon"></span></a>
-      <a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a>
-    </div>
-  </div>
-</footer>
-</body>
+		<footer class="site-footer">
+			<div class="container footer-inner">
+				<a class="brand" href="index.html">
+					<img src="assets/img/logo.png" alt="" />
+					<span>HorOS Linux<small>arch-based, ai-native</small></span>
+				</a>
+				<div class="footer-links">
+					<a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Source code<span data-icon="external" class="link-icon"></span></a>
+					<a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>

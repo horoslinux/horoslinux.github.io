@@ -30,9 +30,9 @@ Images were copied from `horcore/airootfs/usr/share/horos/branding` and
 
 ## Wallpapers
 
-Three images are shown side by side and the strip shifts by one each step: 1-2-3, then 2-3-4, 3-4-5, up to 20 and back around. Hovering does not pause the transition. If `prefers-reduced-motion` is enabled, automatic cycling is disabled.
+Three images are shown side by side and the strip shifts by one each step: 1-2-3, then 2-3-4, 3-4-5, up to 15 and back around. Hovering does not pause the transition. If `prefers-reduced-motion` is enabled, automatic cycling is disabled.
 
-Images were resized from the original files above 1920 px in the source ISO to 1600 px wide and re-saved as JPEG.
+The 15 JPEGs are copied from the source ISO with their original resolutions and named `horos-wallpaper-01.jpg` through `horos-wallpaper-15.jpg`.
 
 ## Publishing
 

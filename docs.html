@@ -85,9 +85,13 @@
       <section id="genel-bakis">
         <h2>Overview</h2>
         <p>
-          HorOS is an Arch Linux-based live ISO with a terminal setup wizard. The setup interface is a Fedora Anaconda-style
-          summary screen, backed by <code>archinstall --silent</code>. This keeps Arch's flexibility without making you work
-          through complex command-line steps.
+          HorOS is an Arch Linux-based live ISO with a guided <code>whiptail</code> TUI setup wizard. The interface asks one
+          question at a time and hands the finished configuration to <code>archinstall</code>. There is no numbered CLI menu
+          and no Anaconda-style summary screen to drive.
+        </p>
+        <p>
+          The ISO boots with the bundled HorOS Plymouth splash and <code>quiet splash</code>. systemd status messages are
+          hidden during startup; press <code>Esc</code> at any time to see the detailed boot log.
         </p>
         <p>
           Once installed, the system is a completely standard Arch: <code>pacman</code>, the standard directory layout, and
@@ -148,7 +152,7 @@ UEFI=1 ./test-qemu.sh     # UEFI (requires edk2-ovmf)</code></pre>
 
       <section id="kurulum">
         <h2>Installation</h2>
-        <p>Once the ISO is ready, write it to USB, boot from it, and complete the summary in the terminal wizard. A typical install takes a few minutes, depending on download speed.</p>
+        <p>Once the ISO is ready, write it to USB, boot from it, and follow the guided TUI wizard. A typical install takes a few minutes, depending on download speed.</p>
 
         <h3>Write to USB and boot</h3>
         <p>Write the ISO you built to a USB device and boot from it.</p>
@@ -164,31 +168,29 @@ UEFI=1 ./test-qemu.sh     # UEFI (requires edk2-ovmf)</code></pre>
           </div>
           <div class="step">
             <h3>Boot from USB</h3>
-            <p>Select the USB device from your firmware menu. On UEFI systems, use 64-bit UEFI mode. The setup screen opens directly; no username or password is required.</p>
+            <p>Select the USB device from your firmware menu. On UEFI systems, use 64-bit UEFI mode. The HorOS splash appears, then the setup TUI opens directly; no username or password is required.</p>
           </div>
         </div>
 
         <h3>Setup wizard</h3>
-        <p>The screen is an Installation Summary. Select an item to change its settings, then press <span class="kbd">b</span> to begin.</p>
+        <p>The full-screen <code>whiptail</code> wizard asks one step at a time. Use the arrow keys to move, <span class="kbd">Space</span> to select, <span class="kbd">Enter</span> to continue, and <span class="kbd">Esc</span> to cancel.</p>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Summary item</th><th>What it does</th></tr></thead>
+            <thead><tr><th>Step</th><th>What it does</th></tr></thead>
             <tbody>
-              <tr><td>1. Keyboard</td><td>Set the keyboard layout (for example <code>trq</code> or <code>us</code>).</td></tr>
-              <tr><td>2. Time zone</td><td>Confirm or change the automatically detected time zone.</td></tr>
+              <tr><td>1. Network and hostname</td><td>Check the connection, configure Wi-Fi or Ethernet with <code>nmtui</code> if needed, and set the machine name.</td></tr>
+              <tr><td>2. Region and language</td><td>Detect keyboard layout, time zone, and language from your IP address, then confirm or override each one.</td></tr>
               <tr><td>3. Installation profile</td><td>Choose <strong>Server</strong> or <strong>Workstation</strong>.</td></tr>
-              <tr><td>4. Desktop environment</td><td>Workstation only: terminal, KDE Plasma, or GNOME.</td></tr>
-              <tr><td>5. AI assistant (limon)</td><td>The base install is always included; choose which provider SDK to add: Claude, OpenAI, or Gemini.</td></tr>
-              <tr><td>6. Installation target</td><td>Select a disk, then choose full-disk or free-space installation.</td></tr>
-              <tr><td>7. Network and hostname</td><td>If needed, configure Wi-Fi or networking with <code>nmtui</code>; set the hostname.</td></tr>
-              <tr><td>8. Root account</td><td>Set a root password or leave it locked.</td></tr>
-              <tr><td>9. Create user</td><td>Set up your daily user and sudo access.</td></tr>
-              <tr><td>10. Swap space</td><td>Enable or disable a swapfile on the ext4 root.</td></tr>
+              <tr><td>4. Desktop environment</td><td>Workstation only: terminal only, KDE Plasma, or GNOME.</td></tr>
+              <tr><td>5. Accounts</td><td>Leave root locked or set a root password, then create a daily user with optional sudo access. At least one administrator is required.</td></tr>
+              <tr><td>6. Installation target</td><td>Select a disk, then choose full-disk erase or install into free space while preserving existing partitions. The live medium is hidden from the list.</td></tr>
+              <tr><td>7. Swap space</td><td>Enable or disable a swapfile on the ext4 root; the default size is based on RAM.</td></tr>
+              <tr><td>8. Final confirmation</td><td>Review the summary and confirm. There is no separate <code>INSTALL</code> prompt; this confirmation starts setup.</td></tr>
             </tbody>
           </table>
         </div>
         <div class="note">
-          To start, choose <span class="kbd">b</span> in the summary, then type <code>INSTALL</code> to confirm. When setup finishes, remove the USB and reboot.
+          When setup finishes, remove the USB and reboot. Cancelling returns to a result menu with retry, network settings, and shell options.
         </div>
 
         <h3>After installation</h3>
@@ -199,7 +201,10 @@ sudo pacman -Syu
 limon config
 
 # Check network status
-nmcli device status</code></pre>
+nmcli device status
+
+# Check firewall rules
+sudo ufw status</code></pre>
         <p>See the <a href="#disk-duzeni">disk layout</a> section for details on disk modes.</p>
       </section>
 
@@ -234,25 +239,23 @@ nmcli device status</code></pre>
       <section id="paketler-ve-servisler">
         <h2>Packages and services</h2>
         <h3>Included in every profile</h3>
-        <p><code>nano</code>, <code>nftables</code>, <code>openssh</code>, <code>networkmanager</code>, <code>less</code>, <code>htop</code>, <code>curl</code>, <code>wget</code>, <code>bash-completion</code>, <code>man-db</code>, <code>man-pages</code>, <code>pciutils</code>, <code>usbutils</code>, <code>os-prober</code>, <code>fuse3</code>, <code>linux-firmware</code>, and <code>xdg-utils</code>.</p>
+        <p><code>nano</code>, <code>ufw</code>, <code>openssh</code>, <code>networkmanager</code>, <code>less</code>, <code>htop</code>, <code>curl</code>, <code>wget</code>, <code>bash-completion</code>, <code>man-db</code>, <code>man-pages</code>, <code>pciutils</code>, <code>usbutils</code>, <code>os-prober</code>, <code>fuse3</code>, <code>linux-firmware</code>, and <code>xdg-utils</code>.</p>
         <h3>Enabled services</h3>
-        <p><code>nftables.service</code>, <code>NetworkManager.service</code>, <code>systemd-timesyncd.service</code>. On the Server profile, <code>sshd.service</code> is also enabled.</p>
+        <p><code>ufw.service</code>, <code>NetworkManager.service</code>, <code>systemd-timesyncd.service</code>. On the Server profile, <code>sshd.service</code> is also enabled.</p>
         <h3>Security</h3>
-        <p>The default nftables policy drops incoming connections. No service is exposed on Workstation; on Server, only SSH (22) is open.</p>
+        <p>UFW denies incoming connections and allows outgoing ones. No service is exposed on Workstation; on Server, only SSH (22/tcp) is open. Manage it with <code>sudo ufw status</code> and <code>sudo ufw allow &lt;port&gt;/tcp</code>.</p>
       </section>
 
       <section id="limon">
         <h2>limon AI assistant</h2>
         <p>
           <a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a> is the AI-native part of HorOS and
-          is included in every base install. Setup only asks which provider SDK to add:
+          is included in every base install. Setup does not ask for a provider; choose one and add its API key after installation with <code>limon config</code>.
         </p>
         <ul>
-          <li>Base only: choose the provider later with <code>limon config</code></li>
           <li>Claude</li>
           <li>OpenAI</li>
           <li>Gemini</li>
-          <li>All</li>
         </ul>
         <p>The source tree is installed under <code>~/.limon</code>, the virtual environment at <code>~/.limon/.venv</code>, and the command at <code>~/.local/bin/limon</code>. Installation is performed for both root and the created regular user.</p>
         <pre><code>limon config      # provider and API key
@@ -262,7 +265,9 @@ limon --help</code></pre>
       <section id="sorun-giderme">
         <h2>Troubleshooting</h2>
         <h3>Setup exits with code 99</h3>
-        <p>Required items in the summary are incomplete: no disk selected, no administrator account, or no internet connection. Fix the relevant items and try again.</p>
+        <p>Required information is incomplete: no disk selected, no administrator account, or no internet connection. Return to the relevant wizard step, fix it, and try again.</p>
+        <h3>Setup exits with code 130</h3>
+        <p>The wizard was cancelled with <span class="kbd">Esc</span>. Choose <strong>Try again</strong> in the result menu to restart it.</p>
         <h3>Setup exits with code 3</h3>
         <p>Boot validation failed. The kernel, initramfs, or GRUB/EFI files are not where expected. Repeat the install; if the problem continues, check <code>/var/log/archinstall/install.log</code>.</p>
         <h3>Setup exits with code 4</h3>
@@ -271,7 +276,7 @@ limon --help</code></pre>
 sudo rm -f /etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc</code></pre>
         <p>Then log out and back in; Plasma will recreate its default panel layout.</p>
         <h3>Setup asks for a network</h3>
-        <p>Choose <strong>7. Network and hostname</strong> in the summary, connect with <code>nmtui</code>, and try again.</p>
+        <p>Choose <strong>1. Network and hostname</strong> in the wizard, connect with <code>nmtui</code>, and try again.</p>
         <h3>UEFI system won't boot</h3>
         <p>Select 64-bit UEFI mode instead of 32-bit UEFI in your firmware. If Secure Boot is enabled, disable it temporarily and retry.</p>
       </section>
