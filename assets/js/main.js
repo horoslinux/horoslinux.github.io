@@ -95,27 +95,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Docs sidebar: mark the section currently in view.
   const sideLinks = [...document.querySelectorAll(".docs-sidebar a[href^='#']")];
-  if (sideLinks.length && "IntersectionObserver" in window) {
-    const sections = sideLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean);
+  if (sideLinks.length) {
+    const items = sideLinks
+      .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
+      .filter((item) => item.section);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        sideLinks.forEach((link) => {
-          link.classList.toggle("active", link.getAttribute("href") === `#${visible.target.id}`);
-        });
-        const activeLink = sideLinks.find((link) => link.classList.contains("active"));
-        const current = document.querySelector("[data-toc-current]");
-        if (activeLink && current) current.textContent = activeLink.textContent.trim();
-      },
-      { rootMargin: "-90px 0px -65% 0px", threshold: [0, 0.2, 0.6] }
-    );
+    function updateActiveSection() {
+      if (!items.length) return;
 
-    sections.forEach((section) => observer.observe(section));
+      const header = document.querySelector(".site-header");
+      const toc = document.querySelector(".docs-toc-mobile");
+      const stickyBottom = toc && getComputedStyle(toc).display !== "contents"
+        ? toc.getBoundingClientRect().bottom
+        : header.getBoundingClientRect().bottom;
+      const probe = stickyBottom + 16;
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+
+      let active = items[0];
+      if (atBottom) {
+        active = items[items.length - 1];
+      } else {
+        for (const item of items) {
+          if (item.section.getBoundingClientRect().top <= probe) active = item;
+        }
+      }
+
+      items.forEach((item) => item.link.classList.toggle("active", item === active));
+      const current = document.querySelector("[data-toc-current]");
+      if (current) current.textContent = active.link.textContent.trim();
+    }
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("load", updateActiveSection);
   }
 });
