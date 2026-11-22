@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Belgeler: HorOS Linux</title>
-  <meta name="description" content="HorOS Linux belgeleri: ISO derleme, kurulum, disk düzeni, profiller, paketler, limon AI asistanı ve sorun giderme.">
+  <title>Docs: HorOS Linux</title>
+  <meta name="description" content="HorOS Linux documentation: building the ISO, installation, disk layout, profiles, packages, the limon AI assistant, and troubleshooting.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/png" href="assets/img/icon.png">
   <script>
@@ -30,21 +30,21 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="HorOS ana sayfa">
-      <img src="assets/img/logo.png" alt="HorOS logosu">
+    <a class="brand" href="index.html" aria-label="HorOS home">
+      <img src="assets/img/logo.png" alt="HorOS logo">
       <span>HorOS</span>
     </a>
     <div class="header-actions">
-      <button class="icon-btn theme-btn" type="button" aria-label="Karanlık temaya geç" title="Karanlık temaya geç">
+      <button class="icon-btn theme-btn" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
         <span class="theme-icon theme-icon-sun" data-icon="sun"></span>
         <span class="theme-icon theme-icon-moon" data-icon="moon"></span>
       </button>
-      <button class="icon-btn menu-btn" type="button" aria-label="Menüyü aç" aria-expanded="false">
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
         <span data-icon="menu"></span>
       </button>
-      <nav class="nav" aria-label="Ana menü">
-        <a href="index.html" data-page="index.html">Tanıtım</a>
-        <a href="docs.html" data-page="docs.html">Belgeler</a>
+      <nav class="nav" aria-label="Main menu">
+        <a href="index.html" data-page="index.html">Home</a>
+        <a href="docs.html" data-page="docs.html">Docs</a>
       </nav>
     </div>
   </div>
@@ -54,235 +54,235 @@
   <div class="container docs-wrap">
     <div class="docs-toc-mobile">
       <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="docs-toc">
-        <span class="toc-title">Bu sayfada</span>
-        <span class="toc-current" data-toc-current>Genel bakış</span>
+        <span class="toc-title">On this page</span>
+        <span class="toc-current" data-toc-current>Overview</span>
         <span class="toc-chevron" data-icon="chevron-down"></span>
       </button>
-      <aside class="docs-sidebar" id="docs-toc" aria-label="Belge içeriği">
-        <h4>Bu sayfada</h4>
+      <aside class="docs-sidebar" id="docs-toc" aria-label="Page contents">
+        <h4>On this page</h4>
 
-        <p class="group">Başlarken</p>
-        <a href="#genel-bakis">Genel bakış</a>
-        <a href="#gereksinimler">Sistem gereksinimleri</a>
+        <p class="group">Getting started</p>
+        <a href="#genel-bakis">Overview</a>
+        <a href="#gereksinimler">System requirements</a>
 
-        <p class="group">ISO ve kurulum</p>
-        <a href="#iso-derleme">ISO derleme</a>
-        <a href="#kurulum">Kurulum</a>
-        <a href="#disk-duzeni">Disk düzeni</a>
+        <p class="group">ISO and installation</p>
+        <a href="#iso-derleme">Build the ISO</a>
+        <a href="#kurulum">Installation</a>
+        <a href="#disk-duzeni">Disk layout</a>
 
-        <p class="group">Sistem</p>
-        <a href="#profil-ve-masaustu">Profiller ve masaüstü</a>
-        <a href="#paketler-ve-servisler">Paketler ve servisler</a>
-        <a href="#limon">limon AI asistanı</a>
+        <p class="group">System</p>
+        <a href="#profil-ve-masaustu">Profiles and desktop</a>
+        <a href="#paketler-ve-servisler">Packages and services</a>
+        <a href="#limon">limon AI assistant</a>
 
-        <p class="group">Yardım</p>
-        <a href="#sorun-giderme">Sorun giderme</a>
-        <a href="#kaynaklar">Kaynaklar</a>
+        <p class="group">Help</p>
+        <a href="#sorun-giderme">Troubleshooting</a>
+        <a href="#kaynaklar">Resources</a>
       </aside>
     </div>
 
     <article class="doc-article">
       <section id="genel-bakis">
-        <h2>Genel bakış</h2>
+        <h2>Overview</h2>
         <p>
-          HorOS, Arch Linux tabanlı bir canlı ISO ve terminal kurulum sihirbazıdır. Kurulum arayüzü Fedora Anaconda tarzı bir
-          özet ekranıdır; arka uçta <code>archinstall --silent</code> çalışır. Böylece Arch’in esnekliği korunurken kullanıcı
-          karmaşık komut satırı adımlarıyla uğraşmaz.
+          HorOS is an Arch Linux-based live ISO with a terminal setup wizard. The setup interface is a Fedora Anaconda-style
+          summary screen, backed by <code>archinstall --silent</code>. This keeps Arch's flexibility without making you work
+          through complex command-line steps.
         </p>
         <p>
-          Kurulum tamamlandıktan sonra sistem tamamen standart bir Arch’tır: <code>pacman</code>, standart dizin yapısı ve
-          standart systemd servisleri kullanılır. HorOS’a özel katman yalnızca kurulum aracı, marka dosyaları, profiller ve
-          <code>limon</code> entegrasyonudur.
+          Once installed, the system is a completely standard Arch: <code>pacman</code>, the standard directory layout, and
+          standard systemd services. The HorOS-specific layer is limited to the installer, branding files, profiles, and
+          <code>limon</code> integration.
         </p>
         <div class="note">
-          HorOS yalnızca 64-bit’tir. 32-bit x86 veya 32-bit UEFI desteklenmez.
+          HorOS is 64-bit only. 32-bit x86 and 32-bit UEFI are not supported.
         </div>
       </section>
 
       <section id="gereksinimler">
-        <h2>Sistem gereksinimleri</h2>
+        <h2>System requirements</h2>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Bileşen</th><th>Minimum</th><th>Önerilen</th></tr></thead>
+            <thead><tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr></thead>
             <tbody>
-              <tr><td>CPU</td><td>x86_64, SSE2, 1 GHz</td><td>2 çekirdek, 2 GHz+</td></tr>
-              <tr><td>RAM, canlı kurulum</td><td>1 GB Server, 2 GB masaüstü</td><td>4 GB</td></tr>
-              <tr><td>RAM, kurulu sistem</td><td>2 GB Server, 4 GB masaüstü</td><td>8 GB</td></tr>
+              <tr><td>CPU</td><td>x86_64, SSE2, 1 GHz</td><td>2 cores, 2 GHz+</td></tr>
+              <tr><td>RAM, live environment</td><td>1 GB Server, 2 GB desktop</td><td>4 GB</td></tr>
+              <tr><td>RAM, installed system</td><td>2 GB Server, 4 GB desktop</td><td>8 GB</td></tr>
               <tr><td>Disk</td><td>8 GB</td><td>40 GB SSD</td></tr>
               <tr><td>USB</td><td>4 GB</td><td>8 GB</td></tr>
-              <tr><td>Firmware</td><td>BIOS veya 64-bit UEFI</td><td>UEFI</td></tr>
+              <tr><td>Firmware</td><td>BIOS or 64-bit UEFI</td><td>UEFI</td></tr>
             </tbody>
           </table>
         </div>
-        <p><strong>Ağ:</strong> Paketler kurulum sırasında indirilir. Çevrimdışı kurulum desteklenmez; ağ yoksa sihirbaz ayarları yapmana izin verir ve bağlantı kurulduktan sonra devam eder.</p>
+        <p><strong>Network:</strong> Packages are downloaded during setup. Offline installation is not supported; if there is no connection, the wizard lets you configure settings and continue once the network is up.</p>
 
-        <h3>Neden 32-bit destek yok?</h3>
+        <h3>Why is there no 32-bit support?</h3>
         <p>
-          Arch Linux resmi depoları 2017’de 32-bit (i686) paketleri bıraktı; HorOS da bu depoları kullanır. Bu yüzden
-          32-bit çekirdek, glibc, sürücü ve masaüstü paketleri için ayrı bir kaynak (Arch Linux 32) ve ayrı bir ISO
-          derlemesi gerekir. Mevcut profil <code>arch="x86_64"</code> ve <code>packages.x86_64</code> üzerine kuruludur;
-          önyükleyiciler de BIOS’ta Syslinux, UEFI’de x86_64 systemd-boot’tur.
+          Arch Linux dropped 32-bit (i686) packages from its official repositories in 2017, and HorOS uses those repositories.
+          Supporting 32-bit kernels, glibc, drivers, and desktop packages would require a separate source (Arch Linux 32) and a
+          separate ISO build. The current profile is built on <code>arch="x86_64"</code> and <code>packages.x86_64</code>;
+          the bootloaders are Syslinux for BIOS and x86_64 systemd-boot for UEFI.
         </p>
         <p>
-          Ayrı bir durum da 64-bit işlemciye rağmen <strong>32-bit UEFI</strong> kullanan cihazlardır (örneğin bazı
-          Bay Trail veya Cherry Trail tabletler). Bu cihazlar x86_64 önyükleyiciyi çalıştıramaz; IA32 EFI önyükleyici ve
-          32-bit çekirdek gerekir. HorOS’un şu anki ISO’su bunu içermediğinden bu cihazlarda açılmaz. Firmware’de
-          64-bit UEFI modu varsa onu seçmen yeterlidir.
+          A separate case is devices that use <strong>32-bit UEFI</strong> despite having a 64-bit CPU (for example some
+          Bay Trail or Cherry Trail tablets). These cannot run the x86_64 bootloader; they need an IA32 EFI bootloader and a
+          32-bit kernel. The current HorOS ISO does not include those, so it will not boot on such devices. If your firmware
+          offers a 64-bit UEFI mode, select it.
         </p>
       </section>
 
       <section id="iso-derleme">
-        <h2>ISO derleme</h2>
-        <p>Hazır ISO paylaşılmıyor; kurulum için önce ISO’yu kendin derlemen gerekir. Derleme x86_64 Arch Linux üzerinde yapılır.</p>
+        <h2>Build the ISO</h2>
+        <p>No ready-made ISO is distributed; to install, you first need to build the ISO yourself. Build it on an x86_64 Arch Linux system.</p>
         <pre><code>sudo pacman -Syu
 sudo pacman -S archiso git base-devel qemu-desktop</code></pre>
         <pre><code>git clone https://github.com/horoslinux/horcore.git
 cd horcore
-sudo ./build.sh          # temiz derleme (varsayılan)
-sudo ./build.sh --keep   # work/ dizinini koru</code></pre>
-        <p>Çıktı <code>out/</code> dizinindedir. Varsayılan derleme <code>work/</code> dizinini siler; çünkü <code>mkarchiso</code> adımları önbelleğe alıp profil değişikliklerini atlayabilir.</p>
-        <h3>ISO’yu test etme</h3>
+sudo ./build.sh          # clean build (default)
+sudo ./build.sh --keep   # keep the work/ directory</code></pre>
+        <p>The output is in <code>out/</code>. A clean build removes the <code>work/</code> directory because <code>mkarchiso</code> can cache steps and skip profile changes.</p>
+        <h3>Test the ISO</h3>
         <pre><code>./test-qemu.sh            # BIOS
-UEFI=1 ./test-qemu.sh     # UEFI (edk2-ovmf gerekir)</code></pre>
+UEFI=1 ./test-qemu.sh     # UEFI (requires edk2-ovmf)</code></pre>
       </section>
 
       <section id="kurulum">
-        <h2>Kurulum</h2>
-        <p>ISO hazır olduktan sonra USB’ye yaz, USB’den aç ve terminal sihirbazındaki özeti tamamla. Tipik kurulum, paket indirme hızına bağlı olarak birkaç dakika sürer.</p>
+        <h2>Installation</h2>
+        <p>Once the ISO is ready, write it to USB, boot from it, and complete the summary in the terminal wizard. A typical install takes a few minutes, depending on download speed.</p>
 
-        <h3>USB’ye yaz ve aç</h3>
-        <p>Derlediğin ISO’yu USB ortamına yaz ve sistemden aç.</p>
+        <h3>Write to USB and boot</h3>
+        <p>Write the ISO you built to a USB device and boot from it.</p>
         <div class="steps">
           <div class="step">
-            <h3>USB’ye yaz (Linux)</h3>
-            <p>USB’deki tüm veriler silinir. <code>/dev/sdX</code> yerine kendi USB aygıtını yaz.</p>
+            <h3>Write to USB (Linux)</h3>
+            <p>All data on the USB device will be erased. Replace <code>/dev/sdX</code> with your own device.</p>
             <pre><code>sudo dd if=horos-*.iso of=/dev/sdX bs=4M status=progress oflag=sync</code></pre>
           </div>
           <div class="step">
-            <h3>USB’ye yaz (Windows)</h3>
-            <p>Rufus veya balenaEtcher ile ISO’yu seçip USB’yi GPT/UEFI (veya BIOS için MBR) modunda yaz.</p>
+            <h3>Write to USB (Windows)</h3>
+            <p>Select the ISO in Rufus or balenaEtcher and write the USB in GPT/UEFI mode (or MBR for BIOS).</p>
           </div>
           <div class="step">
-            <h3>USB’den aç</h3>
-            <p>Firmware menüsünden USB’yi seç. UEFI sistemlerde 64-bit UEFI modunu kullan. Kurulum ekranı doğrudan açılır; kullanıcı adı veya parola gerekmez.</p>
+            <h3>Boot from USB</h3>
+            <p>Select the USB device from your firmware menu. On UEFI systems, use 64-bit UEFI mode. The setup screen opens directly; no username or password is required.</p>
           </div>
         </div>
 
-        <h3>Kurulum sihirbazı</h3>
-        <p>Ekran bir Kurulum Özeti ekranıdır. Maddeleri seçerek ayarları değiştir, sonra <span class="kbd">b</span> ile başlat.</p>
+        <h3>Setup wizard</h3>
+        <p>The screen is an Installation Summary. Select an item to change its settings, then press <span class="kbd">b</span> to begin.</p>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Özet maddesi</th><th>Ne yapar?</th></tr></thead>
+            <thead><tr><th>Summary item</th><th>What it does</th></tr></thead>
             <tbody>
-              <tr><td>1. Klavye</td><td>Klavye düzenini ayarla (örneğin <code>trq</code>, <code>us</code>).</td></tr>
-              <tr><td>2. Saat dilimi</td><td>Otomatik algılanan saat dilimini onayla veya değiştir.</td></tr>
-              <tr><td>3. Kurulum profili</td><td><strong>Server</strong> veya <strong>Workstation</strong> seç.</td></tr>
-              <tr><td>4. Masaüstü ortamı</td><td>Yalnızca Workstation’da: terminal, KDE Plasma veya GNOME.</td></tr>
-              <tr><td>5. AI asistanı (limon)</td><td>Temel kurulum her zaman gelir; Claude, OpenAI veya Gemini SDK’larından hangisinin ekleneceğini seç.</td></tr>
-              <tr><td>6. Kurulum hedefi</td><td>Diski seç, ardından tam disk veya boş alana kurulum modunu belirle.</td></tr>
-              <tr><td>7. Ağ ve makine adı</td><td>Gerekirse <code>nmtui</code> ile Wi-Fi veya ağ ayarla; hostname’i belirle.</td></tr>
-              <tr><td>8. Root hesabı</td><td>Root parolası belirle ya da kilitli bırak.</td></tr>
-              <tr><td>9. Kullanıcı oluştur</td><td>Günlük kullanıcıyı ve sudo yetkisini ayarla.</td></tr>
-              <tr><td>10. Takas alanı</td><td>ext4 kök üzerinde swapfile etkinleştir veya devre dışı bırak.</td></tr>
+              <tr><td>1. Keyboard</td><td>Set the keyboard layout (for example <code>trq</code> or <code>us</code>).</td></tr>
+              <tr><td>2. Time zone</td><td>Confirm or change the automatically detected time zone.</td></tr>
+              <tr><td>3. Installation profile</td><td>Choose <strong>Server</strong> or <strong>Workstation</strong>.</td></tr>
+              <tr><td>4. Desktop environment</td><td>Workstation only: terminal, KDE Plasma, or GNOME.</td></tr>
+              <tr><td>5. AI assistant (limon)</td><td>The base install is always included; choose which provider SDK to add: Claude, OpenAI, or Gemini.</td></tr>
+              <tr><td>6. Installation target</td><td>Select a disk, then choose full-disk or free-space installation.</td></tr>
+              <tr><td>7. Network and hostname</td><td>If needed, configure Wi-Fi or networking with <code>nmtui</code>; set the hostname.</td></tr>
+              <tr><td>8. Root account</td><td>Set a root password or leave it locked.</td></tr>
+              <tr><td>9. Create user</td><td>Set up your daily user and sudo access.</td></tr>
+              <tr><td>10. Swap space</td><td>Enable or disable a swapfile on the ext4 root.</td></tr>
             </tbody>
           </table>
         </div>
         <div class="note">
-          Başlatmak için özetten <span class="kbd">b</span> seçeneğini kullan, ardından onay için <code>INSTALL</code> yaz. Kurulum bitince USB’yi çıkarıp yeniden başlat.
+          To start, choose <span class="kbd">b</span> in the summary, then type <code>INSTALL</code> to confirm. When setup finishes, remove the USB and reboot.
         </div>
 
-        <h3>Kurulum sonrası</h3>
-        <pre><code># Sistemi güncelle
+        <h3>After installation</h3>
+        <pre><code># Update the system
 sudo pacman -Syu
 
-# AI sağlayıcısını veya anahtarını ayarla
+# Set the AI provider or API key
 limon config
 
-# Ağ durumunu kontrol et
+# Check network status
 nmcli device status</code></pre>
-        <p>Disk modlarının ayrıntısı için <a href="#disk-duzeni">disk düzeni</a> bölümüne bak.</p>
+        <p>See the <a href="#disk-duzeni">disk layout</a> section for details on disk modes.</p>
       </section>
 
       <section id="disk-duzeni">
-        <h2>Disk düzeni</h2>
-        <h3>Tam disk modu</h3>
+        <h2>Disk layout</h2>
+        <h3>Full-disk mode</h3>
         <ul>
-          <li><strong>UEFI:</strong> 512 MiB FAT32 ESP (<code>/boot</code>) ve kalan alan ext4 kök.</li>
-          <li><strong>BIOS:</strong> 1 GiB FAT32 <code>/boot</code> ve kalan alan ext4 kök.</li>
+          <li><strong>UEFI:</strong> 512 MiB FAT32 ESP (<code>/boot</code>) and the remaining space as ext4 root.</li>
+          <li><strong>BIOS:</strong> 1 GiB FAT32 <code>/boot</code> and the remaining space as ext4 root.</li>
         </ul>
-        <h3>Boş alana kurulum</h3>
-        <p>Mevcut bölümler korunur. Paylaşılan bir ESP varsa bağlanır ve Windows önyükleme dosyalarına dokunulmaz; yeni kök bölümü belirlenen boş alanda oluşturulur.</p>
-        <h3>Takas</h3>
-        <p>Swap ayrı bölüm değil, ext4 kök üzerinde <code>swapfile</code> olarak oluşturulur. Boyut kurulum ortamının RAM’ine göre seçilir ve <code>/etc/fstab</code> üzerinden açılır.</p>
-        <div class="note danger">Tam disk modu seçilen diskin tüm verilerini siler. Kurulumdan önce yedek al.</div>
+        <h3>Install to free space</h3>
+        <p>Existing partitions are preserved. A shared ESP is mounted without touching Windows boot files; the new root partition is created in the selected free space.</p>
+        <h3>Swap</h3>
+        <p>Swap is not a separate partition; it is created as a <code>swapfile</code> on the ext4 root. Its size is chosen based on the installer's RAM and enabled through <code>/etc/fstab</code>.</p>
+        <div class="note danger">Full-disk mode erases all data on the selected disk. Back up before installing.</div>
       </section>
 
       <section id="profil-ve-masaustu">
-        <h2>Profiller ve masaüstü</h2>
+        <h2>Profiles and desktop</h2>
         <h3 id="server">Server</h3>
-        <p>SSH açık (22), diğer tüm gelen bağlantılar kapalı. Sunucu ve terminal kullanımı için minimum kurulum sağlar.</p>
+        <p>SSH open (22), all other incoming connections closed. Provides a minimal install for server and terminal use.</p>
         <h3 id="workstation">Workstation</h3>
-        <p>Tüm gelen bağlantılar kapalı. Masaüstü seçenekleri:</p>
+        <p>All incoming connections closed. Desktop options:</p>
         <ul>
-          <li><strong>Kurma:</strong> yalnızca terminal</li>
-          <li><strong>KDE Plasma:</strong> <code>plasma-meta</code> tabanlı masaüstü</li>
-          <li><strong>GNOME:</strong> GNOME masaüstü</li>
+          <li><strong>Bare:</strong> terminal only</li>
+          <li><strong>KDE Plasma:</strong> <code>plasma-meta</code> based desktop</li>
+          <li><strong>GNOME:</strong> GNOME desktop</li>
         </ul>
-        <p>Donanıma göre NVIDIA, Broadcom ve sanallaştırma sürücüleri canlı ortamda algılanır; Wi-Fi kullanılıyorsa <code>wpa_supplicant</code> eklenir.</p>
+        <p>NVIDIA, Broadcom, and virtualization drivers are detected in the live environment as needed; if Wi-Fi is used, <code>wpa_supplicant</code> is added.</p>
       </section>
 
       <section id="paketler-ve-servisler">
-        <h2>Paketler ve servisler</h2>
-        <h3>Her profile gelenler</h3>
-        <p><code>nano</code>, <code>nftables</code>, <code>openssh</code>, <code>networkmanager</code>, <code>less</code>, <code>htop</code>, <code>curl</code>, <code>wget</code>, <code>bash-completion</code>, <code>man-db</code>, <code>man-pages</code>, <code>pciutils</code>, <code>usbutils</code>, <code>os-prober</code>, <code>fuse3</code>, <code>linux-firmware</code> ve <code>xdg-utils</code>.</p>
-        <h3>Etkin servisler</h3>
-        <p><code>nftables.service</code>, <code>NetworkManager.service</code>, <code>systemd-timesyncd.service</code>. Server profilinde ayrıca <code>sshd.service</code>.</p>
-        <h3>Güvenlik</h3>
-        <p>Varsayılan nftables politikası gelen bağlantıları reddeder. Workstation’da hiçbir servis dışa açılmaz; Server’da yalnızca SSH (22) açıktır.</p>
+        <h2>Packages and services</h2>
+        <h3>Included in every profile</h3>
+        <p><code>nano</code>, <code>nftables</code>, <code>openssh</code>, <code>networkmanager</code>, <code>less</code>, <code>htop</code>, <code>curl</code>, <code>wget</code>, <code>bash-completion</code>, <code>man-db</code>, <code>man-pages</code>, <code>pciutils</code>, <code>usbutils</code>, <code>os-prober</code>, <code>fuse3</code>, <code>linux-firmware</code>, and <code>xdg-utils</code>.</p>
+        <h3>Enabled services</h3>
+        <p><code>nftables.service</code>, <code>NetworkManager.service</code>, <code>systemd-timesyncd.service</code>. On the Server profile, <code>sshd.service</code> is also enabled.</p>
+        <h3>Security</h3>
+        <p>The default nftables policy drops incoming connections. No service is exposed on Workstation; on Server, only SSH (22) is open.</p>
       </section>
 
       <section id="limon">
-        <h2>limon AI asistanı</h2>
+        <h2>limon AI assistant</h2>
         <p>
-          <a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a>, HorOS’un AI-native parçasıdır ve
-          temel kurulum her sisteme gelir. Kurulum sırasında yalnızca hangi sağlayıcı SDK’sının ekleneceği sorulur:
+          <a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a> is the AI-native part of HorOS and
+          is included in every base install. Setup only asks which provider SDK to add:
         </p>
         <ul>
-          <li>Sadece temel: sağlayıcıyı sonra <code>limon config</code> ile seç</li>
+          <li>Base only: choose the provider later with <code>limon config</code></li>
           <li>Claude</li>
           <li>OpenAI</li>
           <li>Gemini</li>
-          <li>Tümü</li>
+          <li>All</li>
         </ul>
-        <p>Kaynak ağaç <code>~/.limon</code> altına kurulur, sanal ortam <code>~/.limon/.venv</code> ve komut <code>~/.local/bin/limon</code> içindedir. Kurulum hem root hem de oluşturulan normal kullanıcı için yapılır.</p>
-        <pre><code>limon config      # sağlayıcı ve API anahtarı
+        <p>The source tree is installed under <code>~/.limon</code>, the virtual environment at <code>~/.limon/.venv</code>, and the command at <code>~/.local/bin/limon</code>. Installation is performed for both root and the created regular user.</p>
+        <pre><code>limon config      # provider and API key
 limon --help</code></pre>
       </section>
 
       <section id="sorun-giderme">
-        <h2>Sorun giderme</h2>
-        <h3>Kurulum kod 99 veriyor</h3>
-        <p>Özet ekranındaki zorunlu maddeler tamamlanmamış: disk seçilmemiş, yönetici hesabı yok veya internet bağlantısı yok. İlgili maddeleri düzeltip tekrar dene.</p>
-        <h3>Kurulum kod 3 veriyor</h3>
-        <p>Önyükleme doğrulaması başarısız. Çekirdek, initramfs veya GRUB/EFI dosyaları beklenen yerde yok. Kurulumu tekrarla; sorun sürerse <code>/var/log/archinstall/install.log</code> dosyasına bak.</p>
-        <h3>Kurulum kod 4 veriyor</h3>
-        <p>Marka dosyaları kopyalanamadı. Güncel sürümde bu sorun giderildi. Eski bir kurulumda KDE paneli veya barı kaybolduysa:</p>
+        <h2>Troubleshooting</h2>
+        <h3>Setup exits with code 99</h3>
+        <p>Required items in the summary are incomplete: no disk selected, no administrator account, or no internet connection. Fix the relevant items and try again.</p>
+        <h3>Setup exits with code 3</h3>
+        <p>Boot validation failed. The kernel, initramfs, or GRUB/EFI files are not where expected. Repeat the install; if the problem continues, check <code>/var/log/archinstall/install.log</code>.</p>
+        <h3>Setup exits with code 4</h3>
+        <p>Branding files could not be copied. This is fixed in the current release. If an older install lost its KDE panel or bar:</p>
         <pre><code>rm -f ~/.config/plasma-org.kde.plasma.desktop-appletsrc
 sudo rm -f /etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc</code></pre>
-        <p>Ardından çıkış yapıp tekrar giriş yap; Plasma varsayılan panel düzenini yeniden oluşturur.</p>
-        <h3>Kurulum ağ istiyor</h3>
-        <p>Özet ekranından <strong>7. Ağ ve makine adı</strong> maddesini seç, <code>nmtui</code> ile bağlantıyı kur ve tekrar dene.</p>
-        <h3>UEFI sistem açılmıyor</h3>
-        <p>Firmware’de 32-bit UEFI yerine 64-bit UEFI modunu seç. Secure Boot etkinse geçici olarak kapatıp kurulumu tekrar dene.</p>
+        <p>Then log out and back in; Plasma will recreate its default panel layout.</p>
+        <h3>Setup asks for a network</h3>
+        <p>Choose <strong>7. Network and hostname</strong> in the summary, connect with <code>nmtui</code>, and try again.</p>
+        <h3>UEFI system won't boot</h3>
+        <p>Select 64-bit UEFI mode instead of 32-bit UEFI in your firmware. If Secure Boot is enabled, disable it temporarily and retry.</p>
       </section>
 
       <section id="kaynaklar">
-        <h2>Kaynaklar</h2>
+        <h2>Resources</h2>
         <ul>
-          <li><a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">horcore: ISO profili ve kurulum aracı<span data-icon="external" class="link-icon"></span></a></li>
-          <li><a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon: AI asistanı<span data-icon="external" class="link-icon"></span></a></li>
-          <li><a href="https://wiki.archlinux.org/title/Arch_install" target="_blank" rel="noopener">Arch Linux kurulum rehberi<span data-icon="external" class="link-icon"></span></a></li>
-          <li><a href="https://wiki.archlinux.org/title/Archiso" target="_blank" rel="noopener">Archiso belgeleri<span data-icon="external" class="link-icon"></span></a></li>
+          <li><a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">horcore: ISO profile and installer<span data-icon="external" class="link-icon"></span></a></li>
+          <li><a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon: AI assistant<span data-icon="external" class="link-icon"></span></a></li>
+          <li><a href="https://wiki.archlinux.org/title/Arch_install" target="_blank" rel="noopener">Arch Linux installation guide<span data-icon="external" class="link-icon"></span></a></li>
+          <li><a href="https://wiki.archlinux.org/title/Archiso" target="_blank" rel="noopener">Archiso documentation<span data-icon="external" class="link-icon"></span></a></li>
         </ul>
       </section>
     </article>
@@ -296,8 +296,8 @@ sudo rm -f /etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc</code></pre
       <span>HorOS Linux<small>arch-based, ai-native</small></span>
     </a>
     <div class="footer-links">
-      <a href="index.html">Tanıtım</a>
-      <a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Kaynak kod<span data-icon="external" class="link-icon"></span></a>
+      <a href="index.html">Home</a>
+      <a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Source code<span data-icon="external" class="link-icon"></span></a>
     </div>
   </div>
 </footer>

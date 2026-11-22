@@ -481,7 +481,7 @@ pre code { background: none; border: 0; padding: 0; color: inherit; }
   .step { padding-left: 22px; }
   .step::before { position: static; margin-bottom: 10px; }
 
-  /* Kurulum: dar ekranda tablo kartlara, kod bloklari sarilmis metne doner. */
+  /* Installation: on narrow screens the table becomes cards and code blocks wrap. */
   #kurulum .steps { gap: 10px; }
   #kurulum .step { padding: 14px; }
   #kurulum .step::before { width: 28px; height: 28px; margin: 0 0 8px; }
@@ -504,7 +504,7 @@ pre code { background: none; border: 0; padding: 0; color: inherit; }
     text-transform: uppercase;
     letter-spacing: .06em;
   }
-  #kurulum td:first-child::before { content: "Madde"; }
-  #kurulum td:last-child::before { content: "Açıklama"; }
+  #kurulum td:first-child::before { content: "Item"; }
+  #kurulum td:last-child::before { content: "Description"; }
   #kurulum pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 }

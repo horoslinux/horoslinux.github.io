@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HorOS Linux: Arch tabanlı, AI-native dağıtım</title>
-  <meta name="description" content="HorOS Linux; Arch Linux tabanlı, AI asistanı limon ile gelen canlı ISO ve kurulum sihirbazı. Tanıtım, kurulum ve belgeler.">
+  <title>HorOS Linux: An Arch-based, AI-native distribution</title>
+  <meta name="description" content="HorOS Linux is an Arch Linux-based live ISO with the limon AI assistant and a terminal setup wizard. Overview, installation, and docs.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/png" href="assets/img/icon.png">
   <script>
@@ -31,21 +31,21 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="HorOS ana sayfa">
-      <img src="assets/img/logo.png" alt="HorOS logosu">
+    <a class="brand" href="index.html" aria-label="HorOS home">
+      <img src="assets/img/logo.png" alt="HorOS logo">
       <span>HorOS</span>
     </a>
     <div class="header-actions">
-      <button class="icon-btn theme-btn" type="button" aria-label="Karanlık temaya geç" title="Karanlık temaya geç">
+      <button class="icon-btn theme-btn" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
         <span class="theme-icon theme-icon-sun" data-icon="sun"></span>
         <span class="theme-icon theme-icon-moon" data-icon="moon"></span>
       </button>
-      <button class="icon-btn menu-btn" type="button" aria-label="Menüyü aç" aria-expanded="false">
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
         <span data-icon="menu"></span>
       </button>
-      <nav class="nav" aria-label="Ana menü">
-        <a href="index.html" data-page="index.html">Tanıtım</a>
-        <a href="docs.html" data-page="docs.html">Belgeler</a>
+      <nav class="nav" aria-label="Main menu">
+        <a href="index.html" data-page="index.html">Home</a>
+        <a href="docs.html" data-page="docs.html">Docs</a>
       </nav>
     </div>
   </div>
@@ -54,21 +54,21 @@
 <main>
   <div class="hero">
     <div class="container hero-inner">
-      <span class="eyebrow">Arch Linux tabanlı, AI-native</span>
-      <h1>Bilgisayarın,<br><em>senin kontrolünde.</em></h1>
+      <span class="eyebrow">Arch Linux based, AI-native</span>
+      <h1>Your computer,<br><em>under your control.</em></h1>
       <p class="lead">
-        HorOS; sade bir Arch tabanı, anlaşılır bir terminal kurulum sihirbazı ve her kurulumda gelen
-        <strong>limon</strong> AI asistanı sunar.
+        HorOS offers a clean Arch base, a straightforward terminal setup wizard, and the
+        <strong>limon</strong> AI assistant on every install.
       </p>
       <div class="buttons">
-        <a class="btn btn-primary" href="docs.html#kurulum">Kuruluma başla<span data-icon="arrow-right"></span></a>
-        <a class="btn btn-secondary" href="docs.html">Belgeleri oku<span data-icon="book"></span></a>
+        <a class="btn btn-primary" href="docs.html#kurulum">Start installation<span data-icon="arrow-right"></span></a>
+        <a class="btn btn-secondary" href="docs.html">Read the docs<span data-icon="book"></span></a>
       </div>
       <div class="hero-meta">
         <span><strong>x86_64</strong> 64-bit</span>
-        <span><strong>1.4 GiB</strong> canlı ISO</span>
+        <span><strong>1.4 GiB</strong> live ISO</span>
         <span><strong>8 GB</strong> minimum disk</span>
-        <span><strong>BIOS + UEFI</strong> desteği</span>
+        <span><strong>BIOS + UEFI</strong> support</span>
       </div>
     </div>
   </div>
@@ -76,39 +76,39 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Neden HorOS?</h2>
-        <p>Arch’in gücünü korur; kurulumu, güvenliği ve AI entegrasyonunu baştan düzenler.</p>
+        <h2>Why HorOS?</h2>
+        <p>It keeps Arch's power while rethinking setup, security, and AI integration from the ground up.</p>
       </div>
       <div class="grid grid-3">
         <article class="card">
           <div class="card-icon"><span data-icon="sparkles"></span></div>
           <h3>AI-native</h3>
-          <p>limon asistanı her sisteme kurulur. Kurulumda sağlayıcıyı seç; API anahtarını sonra <code>limon config</code> ile gir.</p>
+          <p>The limon assistant is installed on every system. Pick a provider during setup, then enter your API key with <code>limon config</code>.</p>
         </article>
         <article class="card">
           <div class="card-icon"><span data-icon="terminal"></span></div>
-          <h3>Terminal öncelikli</h3>
-          <p>Kurulum Anaconda tarzı bir özet ekranında yapılır; arka planda güvenilir <code>archinstall</code> çalışır.</p>
+          <h3>Terminal-first</h3>
+          <p>Setup happens in an Anaconda-style summary screen, with trusted <code>archinstall</code> running underneath.</p>
         </article>
         <article class="card">
           <div class="card-icon"><span data-icon="box"></span></div>
-          <h3>Saf Arch tabanı</h3>
-          <p>Standart paketler, standart yollar, standart <code>pacman</code>. Özel bir fork veya gizli katman yok.</p>
+          <h3>Pure Arch base</h3>
+          <p>Standard packages, standard paths, standard <code>pacman</code>. No custom fork or hidden layer.</p>
         </article>
         <article class="card">
           <div class="card-icon"><span data-icon="grid"></span></div>
-          <h3>İki kullanım profili</h3>
-          <p><strong>Server</strong> ve <strong>Workstation</strong>. Workstation’da terminal, KDE Plasma veya GNOME seçilebilir.</p>
+          <h3>Two usage profiles</h3>
+          <p><strong>Server</strong> and <strong>Workstation</strong>. Workstation lets you choose a terminal, KDE Plasma, or GNOME.</p>
         </article>
         <article class="card">
           <div class="card-icon"><span data-icon="shield"></span></div>
-          <h3>Güvenlik varsayılanı</h3>
-          <p><code>nftables</code> gelen bağlantıları varsayılan olarak engeller. SSH yalnızca Server profilinde açıktır.</p>
+          <h3>Security by default</h3>
+          <p><code>nftables</code> blocks incoming connections by default. SSH is open only on the Server profile.</p>
         </article>
         <article class="card">
           <div class="card-icon"><span data-icon="bolt"></span></div>
-          <h3>RAM’den çalışan ISO</h3>
-          <p>Canlı ortam <code>archiso</code> ile RAM’e yüklenir; kurulum başlar başlamaz ağ ve donanım arka planda algılanır.</p>
+          <h3>ISO that runs from RAM</h3>
+          <p>The live environment loads into RAM with <code>archiso</code>; as soon as setup starts, network and hardware are detected in the background.</p>
         </article>
       </div>
     </div>
@@ -117,18 +117,18 @@
   <section class="alt">
     <div class="container">
       <div class="section-head">
-        <h2>Tek bakışta</h2>
-        <p>Başlamadan önce bilmen gereken temel rakamlar.</p>
+        <h2>At a glance</h2>
+        <p>The key numbers to know before you start.</p>
       </div>
       <div class="facts">
-        <div class="fact"><b>64-bit</b><span>x86_64, SSE2, 32-bit destek yok</span></div>
-        <div class="fact"><b>1 GB</b><span>Canlı kurulum için minimum RAM (Server)</span></div>
-        <div class="fact"><b>8 GB</b><span>Minimum disk alanı</span></div>
-        <div class="fact"><b>4 GB</b><span>Önerilen USB boyutu</span></div>
+        <div class="fact"><b>64-bit</b><span>x86_64, SSE2, no 32-bit support</span></div>
+        <div class="fact"><b>1 GB</b><span>Minimum RAM for the live environment (Server)</span></div>
+        <div class="fact"><b>8 GB</b><span>Minimum disk space</span></div>
+        <div class="fact"><b>4 GB</b><span>Recommended USB size</span></div>
       </div>
       <div class="note">
-        <strong>İnternet gerekli:</strong> Kurulum sırasında paketler indirilir. HorOS şu an çevrimdışı kurulum desteklemez;
-        ağ bağlantısı yoksa sihirbaz ayarları yapmana izin verir, sonra devam edersin.
+        <strong>Internet required:</strong> Packages are downloaded during setup. HorOS does not currently support offline installation;
+        if there is no network connection, the wizard lets you configure settings first and continue once you are connected.
       </div>
     </div>
   </section>
@@ -136,19 +136,19 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Profiller</h2>
-        <p>İki ana profil; masaüstü yalnızca Workstation’da sorulur.</p>
+        <h2>Profiles</h2>
+        <p>Two main profiles; the desktop is only asked for on Workstation.</p>
       </div>
       <div class="grid grid-2">
         <article class="card">
           <h3>Server</h3>
-          <p>SSH açık (22), diğer tüm gelen bağlantılar kapalı. Terminal tabanlı, minimum kurulum.</p>
-          <p style="margin-top:12px"><a href="docs.html#server">Profil detayları<span data-icon="arrow-right" class="link-icon"></span></a></p>
+          <p>SSH open (22), all other incoming connections closed. A minimal, terminal-based install.</p>
+          <p style="margin-top:12px"><a href="docs.html#server">Profile details<span data-icon="arrow-right" class="link-icon"></span></a></p>
         </article>
         <article class="card">
           <h3>Workstation</h3>
-          <p>Tüm gelen bağlantılar kapalı. Terminal, KDE Plasma veya GNOME ile masaüstü kullanımı için.</p>
-          <p style="margin-top:12px"><a href="docs.html#workstation">Profil detayları<span data-icon="arrow-right" class="link-icon"></span></a></p>
+          <p>All incoming connections closed. For desktop use with a terminal, KDE Plasma, or GNOME.</p>
+          <p style="margin-top:12px"><a href="docs.html#workstation">Profile details<span data-icon="arrow-right" class="link-icon"></span></a></p>
         </article>
       </div>
     </div>
@@ -157,13 +157,13 @@
   <section class="alt">
     <div class="container">
       <div class="section-head">
-        <h2>HorOS duvar kağıtları</h2>
-        <p>ISO ile birlikte 20 duvar kağıdı gelir; kurulumdan sonra seçim listesinde hazır olurlar.</p>
+        <h2>HorOS wallpapers</h2>
+        <p>The ISO ships with 20 wallpapers; after installation they are ready in your selector.</p>
       </div>
       <div class="shots" data-wallpaper-strip>
-        <img class="shot" src="assets/img/wallpaper-01.jpg" alt="HorOS duvar kağıdı 1">
-        <img class="shot" src="assets/img/wallpaper-02.jpg" alt="HorOS duvar kağıdı 2">
-        <img class="shot" src="assets/img/wallpaper-03.jpg" alt="HorOS duvar kağıdı 3">
+        <img class="shot" src="assets/img/wallpaper-01.jpg" alt="HorOS wallpaper 1">
+        <img class="shot" src="assets/img/wallpaper-02.jpg" alt="HorOS wallpaper 2">
+        <img class="shot" src="assets/img/wallpaper-03.jpg" alt="HorOS wallpaper 3">
       </div>
     </div>
   </section>
@@ -171,12 +171,12 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Hazır mısın?</h2>
-        <p>ISO’yu derle, USB’ye yaz ve terminal sihirbazıyla kurulumu tamamla.</p>
+        <h2>Ready?</h2>
+        <p>Build the ISO, write it to USB, and finish the setup in the terminal wizard.</p>
       </div>
       <div class="buttons">
-        <a class="btn btn-primary" href="docs.html#kurulum">Adım adım kurulum<span data-icon="arrow-right"></span></a>
-        <a class="btn btn-secondary" href="docs.html#sorun-giderme">Sorun giderme<span data-icon="book"></span></a>
+        <a class="btn btn-primary" href="docs.html#kurulum">Step-by-step installation<span data-icon="arrow-right"></span></a>
+        <a class="btn btn-secondary" href="docs.html#sorun-giderme">Troubleshooting<span data-icon="book"></span></a>
       </div>
     </div>
   </section>
@@ -189,7 +189,7 @@
       <span>HorOS Linux<small>arch-based, ai-native</small></span>
     </a>
     <div class="footer-links">
-      <a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Kaynak kod<span data-icon="external" class="link-icon"></span></a>
+      <a href="https://github.com/horoslinux/horcore" target="_blank" rel="noopener">Source code<span data-icon="external" class="link-icon"></span></a>
       <a href="https://github.com/horoslinux/limon" target="_blank" rel="noopener">limon<span data-icon="external" class="link-icon"></span></a>
     </div>
   </div>

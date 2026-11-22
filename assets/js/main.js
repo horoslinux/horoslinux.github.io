@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
 
-  // Tema: head içindeki küçük script sayfa çizilmeden önce data-theme'i ayarlar.
+  // Theme: the small script in head sets data-theme before the page renders.
   const themeBtn = document.querySelector(".theme-btn");
 
   function applyTheme(theme) {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = theme === "dark" ? "#111111" : "#ffffff";
     if (!themeBtn) return;
-    const label = theme === "dark" ? "Aydınlık temaya geç" : "Karanlık temaya geç";
+    const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
     themeBtn.setAttribute("aria-label", label);
     themeBtn.setAttribute("title", label);
   }
@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     themeBtn.addEventListener("click", () => {
       const next = root.dataset.theme === "dark" ? "light" : "dark";
       applyTheme(next);
-      try { localStorage.setItem("horos-theme", next); } catch (error) { /* depolama kapalı olabilir */ }
+      try { localStorage.setItem("horos-theme", next); } catch (error) { /* storage may be disabled */ }
     });
   }
 
-  // Mobil menü.
+  // Mobile menu.
   const toggle = document.querySelector(".menu-btn");
   const nav = document.querySelector(".nav");
 
@@ -39,12 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mobil içindekiler paneli.
+  // Mobile table of contents panel.
   const tocToggle = document.querySelector(".toc-toggle");
   const tocWrap = document.querySelector(".docs-toc-mobile");
 
   if (tocToggle && tocWrap) {
-    // Sayfanın en üstünde container boşluğu korunur; yapışınca çubuk tam genişliğe geçer.
+    // Keep the container gutter at the top; go full width once the bar sticks.
     function updateTocStuck() {
       if (getComputedStyle(tocWrap).display === "contents") {
         tocWrap.classList.remove("stuck");
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Aktif üst menü bağlantısını işaretle.
+  // Mark the active top-level nav link.
   const page = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav a[data-page]").forEach((link) => {
     if (link.dataset.page === page) {
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Docs kenar çubuğu: görünür bölümü işaretle.
+  // Docs sidebar: mark the section currently in view.
   const sideLinks = [...document.querySelectorAll(".docs-sidebar a[href^='#']")];
   if (sideLinks.length && "IntersectionObserver" in window) {
     const sections = sideLinks

@@ -1,46 +1,44 @@
 # horoslinux.github.io
 
-HorOS Linux için GitHub Pages statik sitesi. Derleme adımı veya bağımlılık yoktur.
+Static GitHub Pages site for HorOS Linux. No build step and no dependencies.
 
-## Sayfalar
+## Pages
 
-- `index.html` — tanıtım / ana sayfa
-- `docs.html` — kurulum rehberi, teknik belgeler ve sorun giderme
+- `index.html` — landing page
+- `docs.html` — installation guide, technical documentation, and troubleshooting
 
-## Yapı
+## Structure
 
 ```
 assets/
-  css/style.css     # açık/koyu tema, düzen
-  js/icons.js       # merkezi SVG ikon sistemi
-  js/wallpapers.js  # üçlü duvar kağıdı şeridini sırayla kaydırma
-  js/main.js        # tema anahtarı, mobil menü, aktif nav, docs scrollspy
-  img/              # logo, favicon ve duvar kağıtları
+  css/style.css     # light/dark theme, layout
+  js/icons.js       # central SVG icon system
+  js/wallpapers.js  # cycles the three-image wallpaper strip
+  js/main.js        # theme switch, mobile menu, active nav, docs scrollspy
+  img/              # logo, favicon, and wallpapers
 ```
 
-Görseller `horcore/airootfs/usr/share/horos/branding` ve
-`horcore/airootfs/usr/share/backgrounds/horos` dizinlerinden kopyalanmıştır.
+Images were copied from `horcore/airootfs/usr/share/horos/branding` and
+`horcore/airootfs/usr/share/backgrounds/horos`.
 
-## Tema ve ikonlar
+## Theme and icons
 
-- Varsayılan tema açıktır; ziyaretçi sistem tercihine göre koyu temaya geçebilir.
-- Üst çubuktaki güneş/ay düğmesi temayı değiştirir; seçim `localStorage` içinde saklanır.
-- Koyu tema logodaki gibi nötr siyah ve gri tonlarını kullanır.
-- Tüm ikonlar SVG’dir ve `data-icon` özniteliğiyle `assets/js/icons.js` üzerinden yüklenir. Emoji veya sembol karakter kullanılmaz.
+- The default theme is light; visitors can switch to dark based on their system preference.
+- The sun/moon button in the header changes the theme; the choice is stored in `localStorage`.
+- The dark theme uses neutral black and gray tones, matching the logo.
+- All icons are SVG and are loaded through `assets/js/icons.js` with the `data-icon` attribute. No emoji or symbol characters are used.
 
-## Duvar kağıtları
+## Wallpapers
 
-Üç görsel yan yana gösterilir ve şerit her adımda bir kayar: 1-2-3, ardından 2-3-4, 3-4-5 ... 20'ye kadar döner. Fare hareketi geçişi etkilemez. `prefers-reduced-motion` etkinse otomatik geçiş kapalıdır.
+Three images are shown side by side and the strip shifts by one each step: 1-2-3, then 2-3-4, 3-4-5, up to 20 and back around. Hovering does not pause the transition. If `prefers-reduced-motion` is enabled, automatic cycling is disabled.
 
-Görseller kaynak ISO’daki 1920 px üzeri dosyalardan 1600 px genişliğe ölçeklenip JPEG olarak yeniden kaydedilmiştir.
+Images were resized from the original files above 1920 px in the source ISO to 1600 px wide and re-saved as JPEG.
 
-## Yayın
+## Publishing
 
-Depoyu `horoslinux/horoslinux.github.io` adresine push ettiğinde GitHub Pages
-otomatik olarak `https://horoslinux.github.io` adresinde yayınlar. `.nojekyll`
-dosyası Jekyll işlemini devre dışı bırakır; statik dosyalar doğrudan sunulur.
+Pushing to `horoslinux/horoslinux.github.io` makes GitHub Pages publish the site automatically at `https://horoslinux.github.io`. The `.nojekyll` file disables Jekyll processing so static files are served directly.
 
-Yerel önizleme için:
+For a local preview:
 
 ```bash
 python3 -m http.server 8000

@@ -1,5 +1,5 @@
 (() => {
-  // Merkezi SVG ikon kayıtları. HTML'de <span data-icon="ad"></span> kullanılır.
+  // Central SVG icon registry. Use <span data-icon="name"></span> in HTML.
   const ICONS = {
     menu:
       '<line x1="4" y1="7" x2="20" y2="7"/>' +

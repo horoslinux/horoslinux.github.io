@@ -19,7 +19,7 @@
     shots.forEach((img, slot) => {
       const number = ((start + slot) % TOTAL) + 1;
       img.src = source(number);
-      img.alt = `HorOS duvar kağıdı ${number}`;
+      img.alt = `HorOS wallpaper ${number}`;
     });
   }
 
