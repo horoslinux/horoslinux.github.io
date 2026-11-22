@@ -487,6 +487,7 @@ pre code { background: none; border: 0; padding: 0; color: inherit; }
   #kurulum .step::before { width: 28px; height: 28px; margin: 0 0 8px; }
   #kurulum .table-wrap { border: 0; overflow: visible; }
   #kurulum table, #kurulum tbody, #kurulum tr, #kurulum td { display: block; width: 100%; }
+  #kurulum table { background: transparent; }
   #kurulum thead { display: none; }
   #kurulum tr {
     margin-bottom: 10px;
